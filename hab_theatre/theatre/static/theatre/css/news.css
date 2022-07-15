@@ -1,0 +1,49 @@
+.new
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 25vh;
+    margin: var(--padding-a);
+    padding: var(--padding-a);
+    box-shadow: 5px 5px 5px grey, -5px -5px 5px LightGray;
+    border-radius: var(--padding-a);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.new:hover {
+    transition: all .5s ease;
+    transform: scale(1.01);
+}
+
+.new {
+    transition: all .5s ease;
+}
+
+.new > div
+{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.new p, .new a
+{
+    font-family: "Arial";
+}
+
+.new a
+{
+    font-size: var(--link-size);
+    text-align: center;
+}
+
+.news-img
+{
+    display: block;
+    height: 33.33vh;
+    margin: auto;
+    border-radius: var(--padding-a);
+}

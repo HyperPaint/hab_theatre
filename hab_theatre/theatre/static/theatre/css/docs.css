@@ -1,0 +1,39 @@
+.pdf-blocks
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.pdf-blocks > *
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 25vw;
+    margin: var(--padding-a);
+    padding: var(--padding-a);
+    box-shadow: 5px 5px 5px grey, -5px -5px 5px LightGray;
+    border-radius: var(--padding-a);
+}
+
+.pdf-blocks > * > img
+{
+    height: 5vh;
+    margin: var(--padding-a);
+}
+
+.pdf-blocks > * > div
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: var(--padding-a);
+}
+
+.pdf-blocks a
+{
+    text-decoration: none;
+    color: Black;
+}

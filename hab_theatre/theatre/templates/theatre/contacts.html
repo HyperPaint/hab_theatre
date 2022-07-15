@@ -1,0 +1,31 @@
+{% extends 'theatre/t/base.html' %}
+{% load static %}
+
+{% block main %}
+<h1>Контакты</h1>
+<span class="important-text">+7-4212-10-20-30</span>
+<span class="important-text">,&nbsp</span>
+<span class="important-text">г. Хабаровск, Вымышленная ул., 1</span>
+<br/>
+<a href="#">Вконтакте</a>
+<a href="#">Facebook</a>
+<a href="#">Instagram</a>
+<a href="#">Twitter</a>
+<a href="#">Youtube</a>
+<a href="#">habtheatre@mail.ru</a>
+
+<hr/>
+
+<h1>Удобная парковка</h1>
+<div style="display: flex">
+    <div>
+        <img src="{% static 'theatre/img/contacts/park.jpg' %}" class="text-img scalable" alt="Парковка">
+    </div>
+    <div>
+        <p>В пространстве нашей теплой и светлой охраняемой подземной парковки вы можете оставить верхнюю одежду, чтобы не тратить время на гардероб до и после спектакля.</p>
+        <p>Билет на подземную парковку можно приобрести только вместе с билетами на мероприятия.</p>
+        <p class="important-text">Стоимость парковки: 100₽</p>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends './base_t.html' %}
+{% load static %}
+
+{% block header %}
+<nav>
+    <a href = "{% url 'index' %}"><img src="{% static 'theatre/img/logo.png' %}" alt="Главная страница"></a>
+    <div class="alt-nav">
+        <ul>
+        {% for item in menu %}
+            {% if menuCurrent == item %}
+            <li><a href = "{{item.1}}" class="link-current">{{item.0}}</a></li>
+            {% else %}
+            <li><a href = "{{item.1}}">{{item.0}}</a></li>
+            {% endif %}
+        {% endfor %}
+            <li></li>
+        {% if request.user.is_authenticated %}
+            <li><a href = "{% url 'lk' %}">Личный кабинет</a></li>
+            <li><a href="{% url 'logout' %}">Выйти</a></li>
+        {% else %}
+            <li><a href = "{% url 'register' %}">Регистрация</a></li>
+            <li><a href = "{% url 'login' %}">Войти</a></li>
+        {% endif %}
+        </ul>
+    </div>
+</nav>
+{% endblock %}
+
+{% block footer %}
+    <div>
+        <div>
+            <a href = "https://www.dvhab.ru/"><img src="{% static 'theatre/img/dvhablove.png' %}" alt="www.dvhab.ru"></a>
+        </div>
+        <div>
+            <p>Мы находимся в г. Хабаровск по адресу: Вымышленная ул., 1</p>
+            <p>Театр открыт с понедельника по субботу. Воскресенье выходной!</p>
+            <p>Ждём вас с 10:00 до 20:00!</p>
+            <p>Вы можете позвонить нам по номеру 10-20-30.</p>
+        </div>
+        <div>
+            <p>Обнаружили ошибку? Есть предложения или замечания?</p>
+            <p>Напишите нам пару строк habtheatre@mail.ru</p>
+            <p>© 2021 «Хабаровский театр»</p>
+        </div>
+    </div>
+    <hr/>
+    <nav>
+        <ul>
+        {% for item in menu %}
+            {% if menuCurrent == item %}
+            <li><a href = "{{item.1}}" class="link-current">{{item.0}}</a></li>
+            {% else %}
+            <li><a href = "{{item.1}}">{{item.0}}</a></li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+        <a href = "{% url 'index' %}"><img src="{% static 'theatre/img/logo.png' %}" alt="Главная страница"></a>
+    </nav>
+{% endblock %}

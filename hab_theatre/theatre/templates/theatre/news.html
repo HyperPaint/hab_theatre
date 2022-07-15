@@ -1,0 +1,20 @@
+{% extends 'theatre/t/base.html' %}
+{% load static %}
+
+{% block css %}
+<link type="text/css" href="{% static 'theatre/css/news.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block main %}
+    {% for item in news %}
+    <div>
+        <div class="new">
+            <h2>{{ item.title }}</h2>
+            <div>
+                <p>{{ item.text }}</p>
+            </div>
+            <a href ="{% url 'news' %}/{{ item.pk }}">Подробнее</a>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}

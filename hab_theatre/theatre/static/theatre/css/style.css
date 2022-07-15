@@ -1,0 +1,340 @@
+html
+{
+    --header-height: 100px;
+
+    --primary-color: DarkSlateGray;
+    --secondary-color: DarkSteelBlue;
+
+    --gradient-a: linear-gradient(#80808080, #40404080);
+
+    --h1-size: 2em;
+    --h1-interval: 0.25em;
+
+    --h2-size: 1.2em;
+    --h2-interval: 0.25em;
+
+    --text-size: 1.1em;
+    --text-interval: 0.5em;
+
+    --control-size: 1.2em;
+
+    --link-size: 1.2em;
+    --link-nothover: White;
+    --link-hover: SteelBlue;
+
+    --padding-a: 10px;
+    --padding-b: 5px;
+}
+
+@media (min-width: 0px) and (max-width: 550px)
+{
+    html
+    {
+        --header-height: 75px;
+
+        --h1-size: 1em;
+        --h1-interval: 0.2em;
+
+        --h2-size: 1em;
+        --h2-interval: 0.2em;
+
+        --text-size: 0.8em;
+        --text-interval: 0.2em;
+
+        --control-size: 1em;
+
+        --link-size: 1em;
+    }
+}
+
+*
+{
+	font-family: Calibri;
+	margin: 0px;
+	padding: 0px;
+}
+
+body
+{
+    min-height: 100vh;
+    background-color: var(--primary-color);
+    background-image: var(--gradient-a);
+}
+
+/* шапка */
+
+header
+{
+	height: var(--header-height);
+	z-index: 5;
+}
+
+.header-transparent
+{
+    position: absolute;
+    width: calc(100% - 2 * var(--padding-a));
+    background-color: #00000000;
+    background-image: linear-gradient(#000000FF, #00000080);
+    margin-bottom: calc(-1 * var(--header-height));
+}
+
+header, footer
+{
+    background-image: var(--gradient-a);
+    background-color: var(--primary-color);
+}
+
+header, main, footer, hr
+{
+    padding-left: var(--padding-a);
+	padding-right: var(--padding-a);
+}
+
+.no-padding
+{
+    width: calc(100% + 2 * var(--padding-a));
+    margin-left: calc(-1 * var(--padding-a));
+	margin-right: calc(-1 * var(--padding-a));
+}
+
+header img, footer img
+{
+    height: var(--header-height);
+}
+
+/* навигация */
+
+nav
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+@media (min-width: 0px) and (max-width: 1050px)
+{
+    .alt-nav
+    {
+        position: absolute;
+        right: calc(3 * var(--padding-a));
+        top: 0px;
+        width: var(--header-height);
+        height: var(--header-height);
+        background-image: url(../img/alt-nav.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    .alt-nav ul
+    {
+        position: absolute;
+        right: calc(-3 * var(--padding-a));
+        top: 0px;
+        display: none;
+        width: calc(6 * var(--padding-a) + var(--header-height));
+        height: auto;
+        background-color: #40404080;
+        border: solid Black 1px;
+        transition: 0.5s ease;
+    }
+
+    .alt-nav:hover ul, .alt-nav ul:hover
+    {
+        display: flex;
+        flex-direction: column;
+        margin-top: calc(var(--header-height));
+    }
+
+    footer nav ul
+    {
+        z-index: -1;
+    }
+}
+
+nav > *, nav ul li
+{
+    align-self: center;
+}
+
+nav li
+{
+	display: inline-block;
+	padding-left: var(--padding-b);
+	padding-right: var(--padding-b);
+}
+
+nav a, nav span
+{
+    color: var(--link-nothover);
+}
+
+nav a
+{
+    color: var(--link-nothover);
+    font-size: var(--link-size);
+    font-weight: normal;
+    text-decoration: underline;
+    transition: 0.5s ease;
+}
+
+nav a:hover
+{
+    color: var(--link-hover);
+    transition: 0.5s ease;
+}
+
+.link-current /* текущая ссылка страницы */
+{
+	border-radius: 7px;
+	border: dotted 1px white;
+}
+
+/* основа */
+
+main
+{
+	background-color: White;
+	padding-top: var(--padding-a);
+	padding-bottom: var(--padding-a);
+}
+
+main h1
+{
+	color: Black;
+	font-size: var(--h1-size);
+	margin-top: var(--h1-interval);
+	padding-bottom: var(--h1-interval);
+	text-transform: uppercase;
+}
+
+main h2
+{
+	color: Black;
+	font-size: var(--h2-size);
+	margin-top: var(--h2-interval);
+	padding-bottom: var(--h2-interval);
+}
+
+main p
+{
+	font-size: var(--text-size);
+	margin-top: var(--text-interval);
+	padding-bottom: var(--text-interval);
+}
+
+main label, main input, main button, main select
+{
+    font-size: var(--controls-size);
+}
+
+/* подвал */
+
+footer > div
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+footer > div > *
+{
+    align-self: center;
+}
+
+footer p
+{
+    color: White;
+    text-align: center;
+    font-size: var(--text-size);
+}
+
+/* различные тэги */
+
+hr
+{
+	background-color: var(--secondary-color);
+}
+
+img
+{
+	object-fit: cover;
+}
+
+.scalable:hover {
+    transition: all .5s ease;
+    transform: scale(1.05);
+}
+
+.scalable {
+    transition: all .5s ease;
+}
+
+.text-img
+{
+    max-width: 25vw;
+    max-height: 25vw;
+    margin: var(--padding-a);
+    border-radius: var(--padding-a);
+}
+
+.boxs
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.boxs > div
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 25vw;
+    margin: var(--padding-a);
+    padding: var(--padding-a);
+    box-shadow: 5px 5px 5px grey, -5px -5px 5px LightGray;
+    border-radius: var(--padding-a);
+}
+
+.boxs > div > *
+{
+    align-self: center;
+}
+
+.important-text
+{
+    font-size: calc(2 * var(--text-size));
+    text-align: center;
+}
+
+.table
+{
+	width: 100%;
+}
+
+.table, .table tr, .table th, .table tr td
+{
+	border-collapse: collapse;
+	border: 1px solid grey;
+}
+
+.table th
+{
+	background-color: Khaki;
+}
+
+.table tr:nth-child(even)
+{
+	background-color: LightYellow;
+}
+
+.table tr:nth-child(odd)
+{
+	background-color: LemonChiffon;
+}
+
+.table tr:hover
+{
+	background-color: DarkKhaki;
+}

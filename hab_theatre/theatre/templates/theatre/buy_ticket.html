@@ -1,0 +1,31 @@
+{% extends 'theatre/t/base.html' %}
+{% load static %}
+
+{% block css %}
+<link type="text/css" href="{% static 'theatre/css/form.css' %}" rel="stylesheet"/>
+<link type="text/css" href="{% static 'theatre/css/posters.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block main %}
+<div class="poster" style="background-image: url('{{ db.show.img.url }}');">
+    <div>
+        <p>{{ db.date }}, {{ db.time }}</p>
+    </div>
+    <div>
+        <p>{{ db.show.title }}, {{ db.show.ageCategory }}</p>
+    </div>
+</div>
+
+<p>{{ db.show.about }}</p>
+
+{% if request.user.is_authenticated %}
+<form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="buy" value="ok">
+    <button type="submit">Приобрести за {{ db.show.price }}₽</button>
+</form>
+{% else %}
+<p class="important-text">Войдите в систему, чтобы приобрести билет</p>
+{% endif %}
+<p class="important-text">{{ ok }}</p>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'theatre/t/base.html' %}
+{% load static %}
+
+{% block css %}
+<link type="text/css" href="{% static 'theatre/css/form.css' %}" rel="stylesheet"/>
+<link type="text/css" href="{% static 'theatre/css/posters.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block main %}
+<form method="post">
+    {% csrf_token %}
+    <p><label>Выберите дату:</label><input name="date" type="date" required="" id="id_date"></p>
+    <p><button type="submit">Найти</button></p>
+</form>
+
+{% for item in db %}
+<div class="poster" style="background-image: url('{{ item.show.img.url }}');">
+    <div>
+        <p>{{ item.date }}, {{ item.time }}</p>
+    </div>
+    <div>
+        <p>{{ item.show.title }}, {{ item.show.ageCategory }}</p>
+        <button><a href="{% url 'playbill' %}/{{ item.pk }}">Посмотреть</a></button>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

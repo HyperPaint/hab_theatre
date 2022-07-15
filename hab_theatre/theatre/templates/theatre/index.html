@@ -1,0 +1,72 @@
+{% extends 'theatre/t/base.html' %}
+{% load static %}
+
+{% block css %}
+<!-- slick -->
+<link type="text/css" href="{% static 'theatre/css/slider.css' %}" rel="stylesheet"/>
+<link type="text/css" href="{% static 'theatre/css/slick.css' %}" rel="stylesheet"/>
+
+<link type="text/css" href="{% static 'theatre/css/posters.css' %}" rel="stylesheet"/>
+<link type="text/css" href="{% static 'theatre/css/news.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block main %}
+<div class="no-padding">
+    <div class="slider single">
+        <img src="{% static 'theatre/img/img.png' %}" alt="">
+        <img src="{% static 'theatre/img/img.png' %}" alt="">
+        <img src="{% static 'theatre/img/img.png' %}" alt="">
+        <img src="{% static 'theatre/img/img.png' %}" alt="">
+        <img src="{% static 'theatre/img/img.png' %}" alt="">
+    </div>
+    <div class="slider-space"></div>
+</div>
+
+<h1>Афиша</h1>
+<div class="slider posters">
+    {% for item in playbill %}
+    <div>
+        <div class="poster" style="background-image: url('{{ item.show.img.url }}');">
+            <div>
+                <p>{{ item.date }}, {{ item.time }}</p>
+            </div>
+            <div>
+                <p>{{ item.show.title }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<h1>Новости</h1>
+<div class="slider news">
+    {% for item in news %}
+    <div>
+        <div class="new">
+            <h2>{{ item.title }}</h2>
+            <div>
+                <p>{{ item.text }}</p>
+            </div>
+            <a href ="{% url 'news' %}/{{ item.pk }}">Подробнее</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<h1>Мы лучшие среди лучших</h1>
+<div style="display: flex">
+    <p>Хабаровский краевой театр драмы распахнул свои двери перед зрителями в далеком 1946 году. В настоящее время театр драмы — одно из ведущих учреждения культуры Хабаровского края. Каждый сезон театр радует дальневосточного зрителя новыми постановками и гастролями ведущих российских театральных коллективов.</p>
+    <img src="{% static 'theatre/img/index/1.jpg' %}" class="text-img scalable" style="float: right;" alt="Изображение">
+</div>
+<div style="display: flex">
+    <img src="{% static 'theatre/img/index/2.jpg' %}" class="text-img scalable" style="float: left;" alt="Изображение">
+    <p>За 70 лет в театре драмы поставлено более 450 спектаклей из наследия мировой и современной драматургии. В числе актерского состава театра народный артист России С. Лычев, заслуженные артисты России А.Андрощук, С. Царик, Е. Путивец, Е. Монолатий.</p>
+</div>
+{% endblock %}
+
+{% block js %}
+<!-- slick -->
+<script type="text/javascript" src="{% static 'theatre/js/jquery.js' %}"></script>
+<script type="text/javascript" src="{% static 'theatre/js/slick.js' %}"></script>
+<script type="text/javascript" src="{% static 'theatre/js/forslick.js' %}"></script>
+{% endblock %}

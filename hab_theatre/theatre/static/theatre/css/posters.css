@@ -1,0 +1,57 @@
+.poster
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 40vh;
+    margin: var(--padding-a);
+    padding: var(--padding-a);
+    box-shadow: 5px 5px 5px grey, -5px -5px 5px LightGray;
+    border-radius: var(--padding-a);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.poster:hover {
+    transition: all .5s ease;
+    transform: scale(1.01);
+}
+
+.poster {
+    transition: all .5s ease;
+}
+
+.poster > *
+{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.poster > * > *
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.poster > *:first-child
+{
+    justify-content: flex-start;
+}
+
+.poster > *:last-child
+{
+    justify-content: flex-end;
+}
+
+.poster p
+{
+    font-family: "Comic Sans MS", cursive;
+    color: White;
+    font-size: var(--text-size);
+    text-shadow: 5px 5px 5px Black;
+    padding: var(--padding-a);
+    background-color: #00000080;
+    border-radius: var(--padding-a);
+}

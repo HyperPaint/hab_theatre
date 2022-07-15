@@ -1,0 +1,35 @@
+{% extends 'theatre/t/base.html' %}
+{% load static %}
+
+{% block css %}
+<link type="text/css" href="{% static 'theatre/css/news.css' %}" rel="stylesheet"/>
+<link type="text/css" href="{% static 'theatre/css/form.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block main %}
+<img src="{{ news.img.url }}" alt="{{ news.title }}" class="news-img scalable">
+<div>
+    <h2>{{ news.title }}</h2>
+    <div>
+        <p>{{ news.text }}</p>
+    </div>
+</div>
+
+<p>Оставить комментарий</p>
+<form method="post">
+    <span class="errorlist">{{ error }}</span>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <p><button type="submit">Отправить</button></p>
+</form>
+
+{% for item in comments %}
+<div>
+    <h2>{{ item.user }}</h2>
+    <div>
+        <p>{{ item.text }}</p>
+    </div>
+</div>
+<hr/>
+{% endfor %}
+{% endblock %}

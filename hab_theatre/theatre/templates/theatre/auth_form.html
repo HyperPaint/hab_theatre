@@ -1,0 +1,15 @@
+{% extends 'theatre/t/base.html' %}
+{% load static %}
+
+{% block css %}
+<link type="text/css" href="{% static 'theatre/css/form.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block main %}
+<form method="post">
+    <span class="errorlist">{{ error }}</span>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <p><button type="submit">{{ button }}</button></p>
+</form>
+{% endblock %}

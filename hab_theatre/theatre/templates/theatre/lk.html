@@ -1,0 +1,37 @@
+{% extends 'theatre/t/base.html' %}
+{% load static %}
+
+{% block css %}
+<link type="text/css" href="{% static 'theatre/css/form.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block main %}
+<h1>{{ user.username }}</h1>
+<p>Профиль – учетная запись пользователя в социальной сети, вход по которой осуществляется с помощью логина и пароля. В учетной записи содержится информация о пользователе</p>
+
+{% if tickets %}
+<h1>Ваши билеты</h1>
+<table class="table">
+    <thead>
+        <th>Постановка</th>
+        <th>Дата</th>
+        <th>Время</th>
+    </thead>
+    <tbody>
+        {% for item in tickets %}
+        <tr>
+            <td>{{ item.schedule.show }}</td>
+            <td>{{ item.schedule.date }}</td>
+            <td>{{ item.schedule.time }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
+{% if user.is_staff %}
+<h1>Панель администратора</h1>
+<p>Этот пользователь крутой администратор и может зайти в <a href="/admin/">панель администратора</a></p>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,6 @@
+/.idea
+
+# Django stuff:
+*.log
+*.pot
+*.sqlite3
